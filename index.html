@@ -1,87 +1,308 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Saya - Rais Kosato</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Outfit', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .social-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-image {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 50px rgba(118, 75, 162, 0.6);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full gradient-bg">
+  <div id="app-wrapper" class="h-full w-full overflow-auto">
+   <div class="min-h-full w-full flex items-center justify-center p-6 py-12">
+    <div class="w-full max-w-md"><!-- Profile Card -->
+     <div class="glass-card rounded-3xl p-8 shadow-2xl"><!-- Profile Image -->
+      <div class="flex justify-center mb-6 opacity-0 animate-fade-in">
+       <div class="profile-image floating w-32 h-32 rounded-full flex items-center justify-center text-white text-5xl font-bold shadow-xl"><span id="profile-initial">A</span>
+       </div>
+      </div><!-- Name & Title -->
+      <div class="text-center mb-6 opacity-0 animate-fade-in delay-1">
+       <h1 id="display-name" class="text-3xl font-bold text-gray-800 mb-2">Nama Anda</h1>
+       <p id="display-title" class="text-lg text-purple-600 font-medium">Profesi Anda</p>
+      </div><!-- Bio -->
+      <div class="text-center mb-8 opacity-0 animate-fade-in delay-2">
+       <p id="display-bio" class="text-gray-600 leading-relaxed">Halo! Selamat datang di halaman pribadi saya. Saya senang bisa terhubung dengan Anda.</p>
+      </div><!-- Social Links -->
+      <div class="space-y-3" id="social-links"><!-- Instagram --> <a id="instagram-link" href="#" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-gradient-to-r from-pink-500 to-orange-400 text-white font-medium shadow-lg opacity-0 animate-fade-in delay-3" style="display: none;">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg><span>Instagram</span> </a> <!-- Twitter/X --> <a id="twitter-link" href="#" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-black text-white font-medium shadow-lg opacity-0 animate-fade-in delay-3" style="display: none;">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg><span>Twitter / X</span> </a> <!-- LinkedIn --> <a id="linkedin-link" href="#" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-blue-600 text-white font-medium shadow-lg opacity-0 animate-fade-in delay-4" style="display: none;">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg><span>LinkedIn</span> </a> <!-- GitHub --> <a id="github-link" href="#" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-gray-800 text-white font-medium shadow-lg opacity-0 animate-fade-in delay-4" style="display: none;">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg><span>GitHub</span> </a> <!-- YouTube --> <a id="youtube-link" href="#" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-red-600 text-white font-medium shadow-lg opacity-0 animate-fade-in delay-5" style="display: none;">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg><span>YouTube</span> </a> <!-- TikTok --> <a id="tiktok-link" href="#" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-black to-pink-500 text-white font-medium shadow-lg opacity-0 animate-fade-in delay-5" style="display: none;">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+        </svg><span>TikTok</span> </a> <!-- Email --> <a id="email-link" href="#" class="social-btn flex items-center gap-4 w-full p-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium shadow-lg opacity-0 animate-fade-in delay-6" style="display: none;">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg><span>Email</span> </a>
+      </div><!-- No Links Message -->
+      <div id="no-links-message" class="text-center py-8 text-gray-500 opacity-0 animate-fade-in delay-3">
+       <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+       </svg>
+       <p>Tambahkan link media sosial Anda melalui panel edit</p>
+      </div>
+     </div><!-- Footer -->
+     <div class="text-center mt-6 text-white/70 text-sm opacity-0 animate-fade-in delay-7">
+      <p>✨ Dibuat dengan Canva Code</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      profile_name: "Rais Kosato",
+      profile_title: "Mahasiswa",
+      profile_bio: "Halo! Selamat datang di halaman pribadi saya. Saya senang bisa terhubung dengan Anda.",
+      instagram_url: "https://www.instagram.com/kknt.raiskosato/",
+      twitter_url: "x.com",
+      linkedin_url: "https://www.linkedin.com/in/raiskosato/",
+      github_url: "https://github.com/RaisKosato",
+      youtube_url: "youtube.com",
+      tiktok_url: "tiktok.com",
+      email_address: "raiskosato@students.undip.ac.id",
+      background_color: "#667eea",
+      card_color: "#ffffff",
+      text_color: "#1f2937",
+      primary_action_color: "#7c3aed",
+      secondary_action_color: "#6366f1",
+      font_family: "Outfit",
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+
+    function updateUI() {
+      const name = config.profile_name || defaultConfig.profile_name;
+      const title = config.profile_title || defaultConfig.profile_title;
+      const bio = config.profile_bio || defaultConfig.profile_bio;
+      
+      document.getElementById('display-name').textContent = name;
+      document.getElementById('display-title').textContent = title;
+      document.getElementById('display-bio').textContent = bio;
+      document.getElementById('profile-initial').textContent = name.charAt(0).toUpperCase();
+      
+      // Social links
+      const socialLinks = [
+        { id: 'instagram-link', url: config.instagram_url },
+        { id: 'twitter-link', url: config.twitter_url },
+        { id: 'linkedin-link', url: config.linkedin_url },
+        { id: 'github-link', url: config.github_url },
+        { id: 'youtube-link', url: config.youtube_url },
+        { id: 'tiktok-link', url: config.tiktok_url },
+        { id: 'email-link', url: config.email_address, isEmail: true }
+      ];
+      
+      let hasLinks = false;
+      
+      socialLinks.forEach(link => {
+        const element = document.getElementById(link.id);
+        if (link.url && link.url.trim()) {
+          element.style.display = 'flex';
+          if (link.isEmail) {
+            element.href = `mailto:${link.url}`;
+          } else {
+            element.href = link.url;
+          }
+          hasLinks = true;
+        } else {
+          element.style.display = 'none';
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
+      });
+      
+      document.getElementById('no-links-message').style.display = hasLinks ? 'none' : 'block';
+      
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      document.getElementById('display-name').style.fontSize = `${baseSize * 1.875}px`;
+      document.getElementById('display-title').style.fontSize = `${baseSize * 1.125}px`;
+      document.getElementById('display-bio').style.fontSize = `${baseSize}px`;
+    }
+
+    async function onConfigChange(newConfig) {
+      config = { ...defaultConfig, ...newConfig };
+      updateUI();
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.card_color || defaultConfig.card_color,
+            set: (value) => {
+              cfg.card_color = value;
+              window.elementSdk.setConfig({ card_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              cfg.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              cfg.secondary_action_color = value;
+              window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            cfg.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
         }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-        }
-        p {
-            line-height: 1.6;
-        }
-        .social-media {
-            margin-top: 20px;
-        }
-        .social-media a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #4CAF50;
-            font-size: 1.2em;
-        }
-        .social-media a:hover {
-            color: #333;
-        }
-        .social-media img {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-            margin-right: 5px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Rais Kosato</h1>
-    </header>
-    <main>
-        <p>Selamat datang di halaman saya</p>
-        <div class="social-media">
-            <a href="https://www.linkedin.com/in/raiskosato" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"> LinkedIn
-            </a>
-            <a href="https://www.twitter.com" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"> Twitter
-            </a>
-            <a href="https://www.instagram.com/raiskosatoo" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"> Instagram
-            </a>
-        </div>
-    </main>
-    <footer>
-        &copy; 2019 Rais Kosato.
-    </footer>
-</body>
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ["profile_name", cfg.profile_name || defaultConfig.profile_name],
+        ["profile_title", cfg.profile_title || defaultConfig.profile_title],
+        ["profile_bio", cfg.profile_bio || defaultConfig.profile_bio],
+        ["instagram_url", cfg.instagram_url || ""],
+        ["twitter_url", cfg.twitter_url || ""],
+        ["linkedin_url", cfg.linkedin_url || ""],
+        ["github_url", cfg.github_url || ""],
+        ["youtube_url", cfg.youtube_url || ""],
+        ["tiktok_url", cfg.tiktok_url || ""],
+        ["email_address", cfg.email_address || ""]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Initial render
+    updateUI();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c5227cb5636e9d9',t:'MTc2OTYyMDc3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
